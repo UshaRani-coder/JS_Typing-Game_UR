@@ -8,7 +8,6 @@ let footerDivs = document.querySelectorAll("footer div");
 let mistakes = document.querySelector("#mistakes");
 //console.log(wordsPerMin.innerText)
 let tryAgain = footerDivs[2];
-
 //working with timer
 let timer = null;
 let minTime = 0;
@@ -100,6 +99,24 @@ if (charIndex === paraCharacters.length) {
     clearInterval(timer);
   }
 }
+tryAgain.addEventListener("click", function() {
+  // Clear the text field
+  userTyping.value = "";
+  
+  // Reset variables
+  charIndex = 0;
+  timeValue = minTime;
+  isTyping = true;
+  mistakes.innerText = "0";
+
+  // Clear the timer if it's running
+  clearInterval(timer);
+  time.innerText = timeValue;
+
+  // Clear the paragraph and generate a new random one
+  paragraph.innerHTML = "";
+  randomParagraph();
+});
 
 //cpm = (total typed characters)/time elapsed in minutes
 //accuracy = (total keys pressed/correct keys pressed)*100
